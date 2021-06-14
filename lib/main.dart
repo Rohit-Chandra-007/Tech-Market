@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/home_page.dart';
+import 'package:shopping_app/pages/home_page.dart';
+import 'package:shopping_app/pages/login_page.dart';
 
 void main() {
   runApp(ShoppingApp());
@@ -10,6 +11,15 @@ class ShoppingApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: HomePage());
+    return MaterialApp(
+      themeMode: ThemeMode.light,
+      theme: ThemeData(primarySwatch: Colors.deepPurple),
+      darkTheme: ThemeData(brightness: Brightness.dark),
+      initialRoute: "/login",
+      routes: {
+        "/login": (context) => LoginPage(),
+        "/home": (context) => HomePage()
+      },
+    );
   }
 }
