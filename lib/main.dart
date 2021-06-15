@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shopping_app/pages/home_page.dart';
 import 'package:shopping_app/pages/login_page.dart';
+import 'package:shopping_app/utils/routes.dart';
 
 void main() {
   runApp(ShoppingApp());
@@ -19,10 +20,10 @@ class ShoppingApp extends StatelessWidget {
         fontFamily: GoogleFonts.lato().fontFamily,
       ),
       darkTheme: ThemeData(brightness: Brightness.dark),
-      initialRoute: "/login",
+      initialRoute: AppRoutes.loginRoute,
       routes: {
-        "/login": (context) => LoginPage(),
-        "/home": (context) => HomePage()
+        AppRoutes.loginRoute: (context) => LoginPage(),
+        AppRoutes.homeRoute: (context) => HomePage()
       },
     );
   }
