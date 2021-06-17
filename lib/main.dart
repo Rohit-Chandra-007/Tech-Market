@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:shopping_app/pages/home_page.dart';
 import 'package:shopping_app/pages/login_page.dart';
 import 'package:shopping_app/utils/routes.dart';
+import 'package:shopping_app/widgets/app_theme.dart';
 
 void main() {
   runApp(ShoppingApp());
@@ -14,12 +14,9 @@ class ShoppingApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      themeMode: ThemeMode.light,
-      theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
-        fontFamily: GoogleFonts.lato().fontFamily,
-      ),
-      darkTheme: ThemeData(brightness: Brightness.dark),
+      themeMode: ThemeMode.system,
+      theme: AppTheme.lightTheme(context),
+      darkTheme: AppTheme.darkTheme(context),
       initialRoute: AppRoutes.homeRoute,
       routes: {
         AppRoutes.loginRoute: (context) => LoginPage(),
