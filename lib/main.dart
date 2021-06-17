@@ -20,7 +20,7 @@ class ShoppingApp extends StatelessWidget {
         fontFamily: GoogleFonts.lato().fontFamily,
       ),
       darkTheme: ThemeData(brightness: Brightness.dark),
-      initialRoute: AppRoutes.loginRoute,
+      initialRoute: AppRoutes.homeRoute,
       routes: {
         AppRoutes.loginRoute: (context) => LoginPage(),
         AppRoutes.homeRoute: (context) => HomePage()
