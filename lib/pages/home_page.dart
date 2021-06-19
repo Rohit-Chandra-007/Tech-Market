@@ -1,11 +1,19 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:shopping_app/models/product_catalog.dart';
 import 'package:shopping_app/widgets/ProductWidget.dart';
 import 'package:shopping_app/widgets/app_drawer.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     // If dummy list of items want to generate
@@ -27,5 +35,19 @@ class HomePage extends StatelessWidget {
       ),
       drawer: AppDrawer(),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    loadData();
+  }
+
+  loadData() async {
+    final catalogJSON =
+        await rootBundle.loadString('assets/files/catalog.json');
+    final decodeJSON = jsonDecode(catalogJSON);
+    var productData = decodeJSON['products'];
+    print(productData);
   }
 }
