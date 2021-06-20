@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     // If dummy list of items want to generate
-    final dummyList = List.generate(50, (index) => ProductModel.items[0]);
+    // final dummyList = List.generate(50, (index) => ProductModel.items[0]);
     return Scaffold(
       appBar: AppBar(
         title: Text("Tech Market"),
@@ -27,10 +27,10 @@ class _HomePageState extends State<HomePage> {
         child: ListView.builder(
           itemBuilder: (context, index) {
             return ProductWidget(
-              item: dummyList[index],
+              item: ProductModel.items[index],
             );
           },
-          itemCount: dummyList.length,
+          itemCount: ProductModel.items.length,
         ),
       ),
       drawer: AppDrawer(),
@@ -48,6 +48,8 @@ class _HomePageState extends State<HomePage> {
         await rootBundle.loadString('assets/files/catalog.json');
     final decodeJSON = jsonDecode(catalogJSON);
     var productData = decodeJSON['products'];
-    print(productData);
+    ProductModel.items =
+        List.from(productData).map<Item>((item) => Item.fromMap(item)).toList();
+    setState(() {});
   }
 }
