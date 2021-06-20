@@ -1,9 +1,9 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shopping_app/models/product_catalog.dart';
-import 'package:shopping_app/widgets/ProductWidget.dart';
 import 'package:shopping_app/widgets/app_drawer.dart';
 
 class HomePage extends StatefulWidget {
@@ -25,14 +25,25 @@ class _HomePageState extends State<HomePage> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: (ProductModel.items != null && ProductModel.items!.isNotEmpty)
-            ? ListView.builder(
+            ? GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 16,
+                    crossAxisSpacing: 16),
                 itemBuilder: (context, index) {
-                  return ProductWidget(
-                    item: ProductModel.items![index],
+                  final item = ProductModel.items![index];
+                  return Card(
+                    clipBehavior: Clip.antiAlias,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: GridTile(
+                      child: Image.network(item.image),
+                      header: Text(item.name),
+                      footer: Text(item.price.toString()),
+                    ),
                   );
-                },
-                itemCount: ProductModel.items!.length,
-              )
+                })
             : Center(
                 child: CircularProgressIndicator(),
               ),
