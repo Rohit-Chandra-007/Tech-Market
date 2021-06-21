@@ -6,7 +6,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:shopping_app/models/product_catalog.dart';
 import 'package:shopping_app/utils/routes.dart';
-import 'package:shopping_app/widgets/app_theme.dart';
 import 'package:shopping_app/widgets/catalog_header.dart';
 import 'package:shopping_app/widgets/catalog_list.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -24,16 +23,20 @@ class _HomePageState extends State<HomePage> {
     // If dummy list of items want to generate
     // final dummyList = List.generate(50, (index) => ProductModel.items[0]);
     return Scaffold(
+      backgroundColor: context.canvasColor,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.pushNamed(context, AppRoutes.cartRoute);
         },
-        backgroundColor: AppTheme.darkBluishColor,
-        child: Icon(Icons.shopping_cart),
+        backgroundColor: context.theme.buttonColor,
+        child: Icon(
+          Icons.shopping_cart,
+          color: Colors.white,
+        ),
       ),
       body: SafeArea(
         child: Container(
-          padding: Vx.m32,
+          padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

@@ -18,7 +18,7 @@ class ShoppingApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: AppTheme.lightTheme(context),
       darkTheme: AppTheme.darkTheme(context),
-      initialRoute: AppRoutes.homeRoute,
+      initialRoute: AppRoutes.loginRoute,
       routes: {
         AppRoutes.loginRoute: (context) => LoginPage(),
         AppRoutes.homeRoute: (context) => HomePage(),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/utils/routes.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -30,14 +31,14 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.white,
+      color: context.canvasColor,
       child: SingleChildScrollView(
         child: Form(
           key: _formKey,
           child: Column(
             children: [
               Image.asset(
-                "assets/images/login_image.png",
+                "assets/images/hey.png",
                 fit: BoxFit.cover,
               ),
               SizedBox(
@@ -51,8 +52,8 @@ class _LoginPageState extends State<LoginPage> {
                 height: 20.0,
               ),
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 16.0, horizontal: 32.0),
+                padding: const EdgeInsets.symmetric(
+                    vertical: 16.0, horizontal: 32.0),
                 child: Column(
                   children: [
                     TextFormField(
@@ -68,14 +69,16 @@ class _LoginPageState extends State<LoginPage> {
                       decoration: InputDecoration(
                         hintText: "Enter username",
                         labelText: "Username",
+                        labelStyle: TextStyle(color: context.theme.buttonColor),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                          borderSide:
-                              BorderSide(color: Colors.deepPurple, width: 2),
+                          borderSide: BorderSide(
+                              color: context.theme.buttonColor, width: 2),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.deepPurple),
+                          borderSide:
+                              BorderSide(color: context.theme.buttonColor),
                         ),
                       ),
                     ),
@@ -94,14 +97,16 @@ class _LoginPageState extends State<LoginPage> {
                       decoration: InputDecoration(
                         hintText: "Enter password",
                         labelText: "Password",
+                        labelStyle: TextStyle(color: context.theme.buttonColor),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                          borderSide:
-                              BorderSide(color: Colors.deepPurple, width: 2),
+                          borderSide: BorderSide(
+                              color: context.theme.buttonColor, width: 2),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.deepPurple),
+                          borderSide:
+                              BorderSide(color: context.theme.buttonColor),
                         ),
                       ),
                     ),
@@ -109,7 +114,7 @@ class _LoginPageState extends State<LoginPage> {
                       height: 20.0,
                     ),
                     Material(
-                      color: Colors.deepPurple,
+                      color: context.theme.buttonColor,
                       elevation: 1.0,
                       borderRadius:
                           BorderRadius.circular(_changeButton ? 50 : 10),

@@ -1,10 +1,17 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:shopping_app/models/product_catalog.dart';
-import 'package:shopping_app/widgets/app_theme.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class ProductPage extends StatelessWidget {
   final Item productItem;
+  final String productDetails = "Dolor sea takimata ipsum sea eirmod "
+      "aliquyam est.Eos ipsum voluptua eirmod elitr, no dolor dolor amet"
+      " eirmod dolor labore dolores magna. Amet vero vero"
+      " vero kasd, dolore sea sed sit invidunt nonumy est "
+      "sit clita. Diam aliquyam amet tempor diam no aliquyam"
+      " invidunt. Elitr lorem eirmod dolore clita. Rebum.";
 
   const ProductPage({Key? key, required this.productItem}) : super(key: key);
 
@@ -12,11 +19,11 @@ class ProductPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppTheme.creamColor,
+        backgroundColor: Colors.transparent,
       ),
-      backgroundColor: AppTheme.creamColor,
+      backgroundColor: context.canvasColor,
       bottomNavigationBar: Container(
-        color: Colors.white,
+        color: context.cardColor,
         child: ButtonBar(
           alignment: MainAxisAlignment.spaceBetween,
           buttonPadding: EdgeInsets.zero,
@@ -29,7 +36,7 @@ class ProductPage extends StatelessWidget {
                 child: 'Add to Cart'.text.make(),
                 style: ButtonStyle(
                     backgroundColor:
-                        MaterialStateProperty.all(AppTheme.darkBluishColor),
+                        MaterialStateProperty.all(context.theme.buttonColor),
                     shape: MaterialStateProperty.all(StadiumBorder())),
               ).wh(120, 50),
             )
@@ -50,32 +57,47 @@ class ProductPage extends StatelessWidget {
                 arcType: VxArcType.CONVEY,
                 edge: VxEdge.TOP,
                 child: Container(
-                  color: Colors.white,
+                  color: context.cardColor,
                   width: double.infinity,
-                  child: Column(
-                    children: [
-                      productItem.name.text.xl4
-                          .color(AppTheme.darkBluishColor)
-                          .bold
-                          .make(),
-                      productItem.desc.text
-                          .textStyle(context.captionStyle!)
-                          .xl
-                          .make(),
-                      10.heightBox,
-                      Expanded(
-                          child: "Dolor sea takimata ipsum sea eirmod aliquyam est. "
-                                  "Eos ipsum voluptua eirmod elitr, no dolor dolor amet"
-                                  " eirmod dolor labore dolores magna. Amet vero vero"
-                                  " vero kasd, dolore sea sed sit invidunt nonumy est "
-                                  "sit clita. Diam aliquyam amet tempor diam no aliquyam"
-                                  " invidunt. Elitr lorem eirmod dolore clita. Rebum."
-                              .text
-                              .textStyle(context.captionStyle!)
-                              .make()
-                              .p12())
-                    ],
-                  ).py64(),
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 64),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          children: [
+                            Text(
+                              productItem.name,
+                              style: TextStyle(
+                                  color: context.accentColor,
+                                  fontSize: 32.0,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              productItem.desc,
+                              style: Theme.of(context).textTheme.caption!.apply(
+                                  fontSizeFactor: 1.5,
+                                  fontSizeDelta: 1.2,
+                                  fontFeatures: []),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          child: Text(
+                            productDetails,
+                            style: Theme.of(context)
+                                .textTheme
+                                .caption!
+                                .apply(fontSizeFactor: 1.2),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ),
             )
