@@ -25,7 +25,6 @@ class _HomePageState extends State<HomePage> {
         child: Container(
           padding: Vx.m32,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CatalogHeader(),
               if (ProductModel.items != null && ProductModel.items!.isNotEmpty)
