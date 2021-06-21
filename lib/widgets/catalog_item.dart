@@ -38,7 +38,7 @@ class CatalogItem extends StatelessWidget {
                       padding: const EdgeInsets.only(right: 8),
                       child: ElevatedButton(
                         onPressed: () {},
-                        child: 'Buy'.text.make(),
+                        child: 'Add to Cart'.text.make(),
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(
                                 AppTheme.darkBluishColor),

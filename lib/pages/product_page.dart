@@ -11,7 +11,9 @@ class ProductPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: AppTheme.creamColor,
+      ),
       backgroundColor: AppTheme.creamColor,
       bottomNavigationBar: Container(
         color: Colors.white,
@@ -24,15 +26,15 @@ class ProductPage extends StatelessWidget {
               padding: const EdgeInsets.only(right: 8),
               child: ElevatedButton(
                 onPressed: () {},
-                child: 'Buy'.text.make(),
+                child: 'Add to Cart'.text.make(),
                 style: ButtonStyle(
                     backgroundColor:
                         MaterialStateProperty.all(AppTheme.darkBluishColor),
                     shape: MaterialStateProperty.all(StadiumBorder())),
-              ).wh(100, 50),
+              ).wh(120, 50),
             )
           ],
-        ).p32(),
+        ).p24(),
       ),
       body: SafeArea(
         bottom: false,
@@ -60,7 +62,18 @@ class ProductPage extends StatelessWidget {
                           .textStyle(context.captionStyle!)
                           .xl
                           .make(),
-                      10.heightBox
+                      10.heightBox,
+                      Expanded(
+                          child: "Dolor sea takimata ipsum sea eirmod aliquyam est. "
+                                  "Eos ipsum voluptua eirmod elitr, no dolor dolor amet"
+                                  " eirmod dolor labore dolores magna. Amet vero vero"
+                                  " vero kasd, dolore sea sed sit invidunt nonumy est "
+                                  "sit clita. Diam aliquyam amet tempor diam no aliquyam"
+                                  " invidunt. Elitr lorem eirmod dolore clita. Rebum."
+                              .text
+                              .textStyle(context.captionStyle!)
+                              .make()
+                              .p12())
                     ],
                   ).py64(),
                 ),
