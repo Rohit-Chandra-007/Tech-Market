@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:shopping_app/models/product_catalog.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import 'app_theme.dart';
 import 'catalog_image.dart';
 
 class CatalogItem extends StatelessWidget {
@@ -23,10 +22,7 @@ class CatalogItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                catalog.name.text.lg
-                    .color(AppTheme.darkBluishColor)
-                    .bold
-                    .make(),
+                catalog.name.text.lg.color(context.accentColor).bold.make(),
                 catalog.desc.text.textStyle(context.captionStyle!).make(),
                 10.heightBox,
                 ButtonBar(

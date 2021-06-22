@@ -30,15 +30,19 @@ class AppTheme {
         appBarTheme: AppBarTheme(
           color: Colors.black,
           elevation: 0.0,
-          textTheme: Theme.of(context).textTheme,
           iconTheme: IconThemeData(
             color: Colors.white,
           ),
+          textTheme: Theme.of(context).textTheme.copyWith(
+                headline6: context.textTheme.headline6!.copyWith(
+                  color: Colors.white,
+                ),
+              ),
         ),
       );
 
   static Color creamColor = Color(0xfff5f5f5);
   static Color darkGreyColor = Vx.gray900;
   static Color darkBluishColor = Color(0xff403b58);
-  static Color lightBluishColor = Vx.indigo400;
+  static Color lightBluishColor = Color(0xff8AB4F8);
 }

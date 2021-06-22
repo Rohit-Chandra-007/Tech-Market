@@ -46,7 +46,9 @@ class _HomePageState extends State<HomePage> {
               else
                 Expanded(
                   child: Center(
-                    child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator(
+                      color: context.theme.buttonColor,
+                    ),
                   ),
                 )
             ],
