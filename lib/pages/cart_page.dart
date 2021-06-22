@@ -44,7 +44,14 @@ class CartTotal extends StatelessWidget {
             width: 30,
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  duration: Duration(milliseconds: 500),
+                  content: Text('Buy not supported yet'),
+                ),
+              );
+            },
             style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(
                 context.theme.buttonColor,
@@ -71,7 +78,7 @@ class _CartListState extends State<CartList> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        itemCount: 5,
+        itemCount: 10,
         itemBuilder: (context, index) {
           return ListTile(
             title: Text('Item ${index + 1}'),
