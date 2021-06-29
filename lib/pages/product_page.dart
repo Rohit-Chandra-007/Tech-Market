@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:shopping_app/models/product_catalog.dart';
+import 'package:shopping_app/models/catalog.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class ProductPage extends StatelessWidget {

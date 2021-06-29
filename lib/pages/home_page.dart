@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:shopping_app/models/product_catalog.dart';
+import 'package:shopping_app/models/catalog.dart';
 import 'package:shopping_app/utils/routes.dart';
 import 'package:shopping_app/widgets/catalog_header.dart';
 import 'package:shopping_app/widgets/catalog_list.dart';
@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CatalogHeader(),
-              if (ProductModel.items != null && ProductModel.items!.isNotEmpty)
+              if (CatalogModel.items != null && CatalogModel.items!.isNotEmpty)
                 Expanded(child: CatalogList().py16())
               else
                 Expanded(
@@ -70,7 +70,7 @@ class _HomePageState extends State<HomePage> {
         await rootBundle.loadString('assets/files/catalog.json');
     final decodeJSON = jsonDecode(catalogJSON);
     var productData = decodeJSON['products'];
-    ProductModel.items =
+    CatalogModel.items =
         List.from(productData).map<Item>((item) => Item.fromMap(item)).toList();
     setState(() {});
   }

@@ -1,30 +1,39 @@
-import 'package:shopping_app/models/product_catalog.dart';
+import 'package:shopping_app/models/catalog.dart';
 
-class CarModel {
+class CartModel {
+  static final cartModel = CartModel._internal();
+
+  CartModel._internal();
+
+  factory CartModel() => cartModel;
+
   // catalog field
-  ProductModel? _productModel;
+  CatalogModel? _catalog;
 
-  // Collection of ID's store ids of each item
+  // Collection of IDs - store Ids of each item
   final List<int> _itemIds = [];
 
-  ProductModel get catalog => _productModel!;
+  // Get Catalog
+  CatalogModel get catalog => _catalog!;
 
-  set catalog(ProductModel productModel) {
-    _productModel = productModel;
+  set catalog(CatalogModel newCatalog) {
+    _catalog = newCatalog;
   }
 
-  // get item in the cart
-  List<Item> get items =>
-      _itemIds.map((id) => _productModel!.getById(id)).toList();
+  // Get items in the cart
+  List<Item> get items => _itemIds.map((id) => _catalog!.getById(id)).toList();
 
-  // get total price
-
+  // Get total price
   num get totalPrice =>
-      items.fold(0, (total, current) => totalPrice + current.price);
+      items.fold(0, (total, current) => total + current.price);
+
+  // Add Item
 
   void add(Item item) {
     _itemIds.add(item.id);
   }
+
+  // Remove Item
 
   void remove(Item item) {
     _itemIds.remove(item.id);

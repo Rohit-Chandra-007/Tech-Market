@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/models/product_catalog.dart';
+import 'package:shopping_app/models/catalog.dart';
 import 'package:shopping_app/pages/product_page.dart';
 
 import 'catalog_item.dart';
@@ -12,7 +12,7 @@ class CatalogList extends StatelessWidget {
     return ListView.builder(
       shrinkWrap: true,
       itemBuilder: (context, index) {
-        final productItem = ProductModel.items![index];
+        final productItem = CatalogModel.items![index];
         return InkWell(
           onTap: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -24,7 +24,7 @@ class CatalogList extends StatelessWidget {
           ),
         );
       },
-      itemCount: ProductModel.items!.length,
+      itemCount: CatalogModel.items!.length,
     );
   }
 }
