@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/core/store.dart';
 import 'package:shopping_app/pages/cart_page.dart';
 import 'package:shopping_app/pages/home_page.dart';
 import 'package:shopping_app/pages/login_page.dart';
 import 'package:shopping_app/utils/routes.dart';
 import 'package:shopping_app/widgets/app_theme.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 void main() {
-  runApp(ShoppingApp());
+  runApp(VxState(child: ShoppingApp(), store: MyStore()));
 }
 
 class ShoppingApp extends StatelessWidget {

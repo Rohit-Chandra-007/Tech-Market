@@ -23,19 +23,22 @@ class ProductPage extends StatelessWidget {
       backgroundColor: context.canvasColor,
       bottomNavigationBar: Container(
         color: context.cardColor,
-        child: ButtonBar(
-          alignment: MainAxisAlignment.spaceBetween,
-          buttonPadding: EdgeInsets.zero,
-          children: [
-            '\$${productItem.price}'.text.bold.xl4.red400.make(),
-            Padding(
-              padding: const EdgeInsets.only(right: 8),
-              child: AddToCart(
-                catalog: productItem,
-              ).wh(100, 40),
-            )
-          ],
-        ).p24(),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+          child: ButtonBar(
+            alignment: MainAxisAlignment.spaceBetween,
+            buttonPadding: EdgeInsets.zero,
+            children: [
+              '\$${productItem.price}'.text.bold.xl4.red400.make(),
+              Padding(
+                padding: const EdgeInsets.only(right: 8),
+                child: AddToCart(
+                  catalog: productItem,
+                ).wh(80, 40),
+              )
+            ],
+          ),
+        ),
       ),
       body: SafeArea(
         bottom: false,
@@ -79,14 +82,16 @@ class ProductPage extends StatelessWidget {
                         SizedBox(
                           height: 10,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
-                          child: Text(
-                            productDetails,
-                            style: Theme.of(context)
-                                .textTheme
-                                .caption!
-                                .apply(fontSizeFactor: 1.2),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            child: Text(
+                              productDetails,
+                              textAlign: TextAlign.justify,
+                              style: Theme.of(context).textTheme.caption!.apply(
+                                    fontSizeFactor: 1.2,
+                                  ),
+                            ),
                           ),
                         ),
                       ],

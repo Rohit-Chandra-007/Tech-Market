@@ -31,39 +31,43 @@ class CartTotal extends StatelessWidget {
   Widget build(BuildContext context) {
     final _cart = CartModel();
     return SizedBox(
-      height: 200,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Text(
-            "\$${_cart.totalPrice} ",
-            style: TextStyle(
-              fontSize: 32,
-              color: context.accentColor,
-            ),
-          ),
-          SizedBox(
-            width: 30,
-          ),
-          ElevatedButton(
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  duration: Duration(milliseconds: 500),
-                  content: Text('Buy not supported yet'),
-                ),
-              );
-            },
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(
-                context.theme.buttonColor,
+      height: 100,
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Text(
+              "\$${_cart.totalPrice} ",
+              style: TextStyle(
+                fontSize: 32,
+                color: context.accentColor,
               ),
             ),
-            child: Text(
-              "Buy",
+            SizedBox(
+              width: 30,
             ),
-          ).w32(context),
-        ],
+            ElevatedButton(
+              onPressed: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    duration: Duration(milliseconds: 500),
+                    content: Text('Buy not supported yet'),
+                  ),
+                );
+              },
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(
+                  context.theme.buttonColor,
+                ),
+              ),
+              child: Text(
+                "Buy",
+              ),
+            ).w32(context),
+          ],
+        ),
       ),
     );
   }
