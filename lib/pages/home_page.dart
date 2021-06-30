@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
         },
         backgroundColor: context.theme.buttonColor,
         child: Icon(
-          Icons.shopping_cart,
+          CupertinoIcons.shopping_cart,
           color: Colors.white,
         ),
       ),
