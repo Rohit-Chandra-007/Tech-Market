@@ -39,11 +39,14 @@ class CartTotal extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              "\$${_cart.totalPrice} ",
-              style: TextStyle(
-                fontSize: 32,
-                color: context.accentColor,
+            VxBuilder<MyStore>(
+              mutations: {RemoveMutation},
+              builder: (context, store, status) => Text(
+                "\$${_cart.totalPrice} ",
+                style: TextStyle(
+                  fontSize: 32,
+                  color: context.accentColor,
+                ),
               ),
             ),
             SizedBox(
@@ -77,9 +80,10 @@ class CartTotal extends StatelessWidget {
 class CartList extends StatelessWidget {
   CartList({Key? key}) : super(key: key);
 
-  final CartModel _cart = (VxState.store as MyStore).cart;
   @override
   Widget build(BuildContext context) {
+    VxState.watch(context, on: [RemoveMutation]);
+    final CartModel _cart = (VxState.store as MyStore).cart;
     return _cart.items.isEmpty
         ? "No Item in Cart".text.xl3.makeCentered()
         : ListView.builder(
@@ -91,7 +95,7 @@ class CartList extends StatelessWidget {
                 trailing: IconButton(
                   icon: Icon(Icons.remove_circle_outline),
                   onPressed: () {
-                    _cart.remove(_cart.items[index]);
+                    RemoveMutation(_cart.items[index]);
                   },
                 ),
               );
