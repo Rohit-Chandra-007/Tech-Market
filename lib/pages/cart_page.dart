@@ -31,12 +31,12 @@ class CartTotal extends StatelessWidget {
   Widget build(BuildContext context) {
     final _cart = CartModel();
     return SizedBox(
-      height: 100,
+      height: 150,
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
               "\$${_cart.totalPrice} ",

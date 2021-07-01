@@ -24,18 +24,15 @@ class ProductPage extends StatelessWidget {
       bottomNavigationBar: Container(
         color: context.cardColor,
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+          padding: const EdgeInsets.all(16),
           child: ButtonBar(
             alignment: MainAxisAlignment.spaceBetween,
             buttonPadding: EdgeInsets.zero,
             children: [
               '\$${productItem.price}'.text.bold.xl4.red400.make(),
-              Padding(
-                padding: const EdgeInsets.only(right: 8),
-                child: AddToCart(
-                  catalog: productItem,
-                ).wh(80, 40),
-              )
+              AddToCart(
+                catalog: productItem,
+              ).wh(80, 40)
             ],
           ),
         ),
